@@ -1,0 +1,40 @@
+//
+// Variables
+//-----------------------------------------------------
+
+// Primary font
+$body-font: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+$white: #FFF;
+
+// Primary color is the main color of the application which is used for navbar, active links and primary button.
+$primary-color: #5680E9;
+
+// Loading bar at the top
+$complementary-color: adjust_hue($primary-color, 180);
+
+// ------- Sidebar Width --------
+$sidebar-width: 230px;
+
+// ------- Sidebar Colors --------
+// Background color of sidebar
+$sidebar-color: #5AB9EA;
+
+// Color of the links of the sidebar. The allowed values are 'light' or 'dark' only
+$sidebar-accent: dark;
+
+// Sidebar link color and link hover color when using a dark sidebar color
+$sidebar-dark-color: #fff;
+$sidebar-dark-link-color: #fff;
+
+// Sidebar link color and link hover color when using a light sidebar color
+$sidebar-light-color: #000;
+$sidebar-light-link-color: #333;
+
+// Common colors used
+$secondary-color-blue: #84CEEB;
+$secondary-color-purple: #C1C8E4;
+$secondary-color-dark-purple: #8860D0;
+$pink-color-button: #E91E63;
+$pink-color-button-hover: #EC407A;
+$form-bg: #fafafa;

@@ -1,0 +1,95 @@
+//
+// Header
+//-----------------------------------------------------
+
+.app-header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	display: flex;
+	background-color: $primary-color;
+	z-index: 1030;
+	padding-right: 15px;
+	@media(min-width: 768px) { padding-right: 30px }
+	@media print { display: none; }
+}
+
+.app-header__logo {
+    flex: 1 0 auto;
+    color: #fff;
+    text-align: center;
+    font-family: 'Grand Hotel', cursive;
+    padding: 0 15px;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 1pt;
+
+    @media(min-width: 768px) {
+        flex: 0 0 auto;
+        display: block;
+        width: $sidebar-width;
+
+        @if $sidebar-accent == dark {
+            background-color: darken( $primary-color, 5% );
+        }
+
+        @if $sidebar-accent == light {
+            background-color: lighten( $primary-color, 5% );
+        }
+    }
+
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+}
+
+.app-sidebar__toggle {
+    padding: 0 15px;
+    font-family: "Font Awesome\ 5 Free";
+    color: #fff;
+    line-height: 2.4;
+    transition: background-color 0.3s ease;
+    font-weight: 900;
+
+    @media(max-width: 767px) {
+        order: -1;
+    }
+
+    &:before {
+        content: "\f0c9";
+        font-size: 21px;
+    }
+
+    &:focus,
+    &:hover {
+        color: #fff;
+        background-color: darken($primary-color, 10);
+        text-decoration: none;
+    }
+}
+
+.app-nav {
+	@extend .list-unstyled;
+	display: flex;
+	margin-bottom: 0;
+	justify-content: flex-end;
+	@media(min-width: 768px) { flex: 1 0 auto; }
+}
+
+.app-nav__item {
+	display: block;
+	padding: 15px;
+	line-height: 20px;
+	color: #fff;
+	transition: background-color 0.3s ease;
+	&:hover,
+	&:focus {
+		background: rgba(0, 0, 0, 0.1);
+		color: #f6f6f6;
+	}
+}

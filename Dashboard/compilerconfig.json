@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "Content/layouts/layout-dashboard.css",
+    "inputFile": "Content/layouts/layout-dashboard.scss"
+  },
+  {
+    "outputFile": "Content/layouts/dashboard/components/_compass.css",
+    "inputFile": "Content/layouts/dashboard/components/_compass.scss"
+  },
+  {
+    "outputFile": "Content/layouts/libraries/_compass.css",
+    "inputFile": "Content/layouts/libraries/_compass.scss"
+  },
+  {
+    "outputFile": "Content/fontawesome/fontawesome.css",
+    "inputFile": "Content/fontawesome/fontawesome.scss"
+  },
+  {
+    "outputFile": "Content/fa.css",
+    "inputFile": "Content/fa.scss"
+  }
+]

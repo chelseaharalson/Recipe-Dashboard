@@ -1,0 +1,107 @@
+﻿@model RecipeDashboard.Models.EditRecipeViewModel
+@{
+    ViewBag.Title = "Edit Recipe";
+    Layout = "~/Views/Dashboard/_LayoutDashboard.cshtml";
+}
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-tasks"></i> Edit Recipe</h1>
+        <p>Press enter after each ingredient or instruction</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">Edit Recipe</a></li>
+    </ul>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-1 col-xl-3"></div>
+    <div class="col-12 col-lg-10 col-xl-6">
+        @using (@Html.BeginForm("EditRecipe", "Dashboard", FormMethod.Post, new { role = "form", @id = "recipe-form", @class = "recipe-form" }))
+        {
+            <div class="margin-bottom-30">
+                <h2 class="recipe-header">Edit Recipe</h2>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextBoxFor(m => m.Name)<span class="bar"></span>
+                        <label>Recipe Name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextAreaFor(m => m.Description)<span class="bar"></span>
+                        <label>Description</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="margin-bottom-30">
+                        @Html.DropDownListFor(m => m.Category, RecipeDashboard.Utils.CategoryList.GetCategoryList().OrderBy(c => c.Text), "Category", new { @class = "cs-select cs-skin-elastic" })
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextBoxFor(m => m.Servings)<span class="bar"></span>
+                        <label>Servings</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextBoxFor(m => m.PrepTime)<span class="bar"></span>
+                        <label>Prep Time</label>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextBoxFor(m => m.CookTime)<span class="bar"></span>
+                        <label>Cook Time</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextAreaFor(m => m.Ingredients, new { @class = "set-height-150" })<span class="bar"></span>
+                        <label>Ingredients</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextAreaFor(m => m.Instructions, new { @class = "set-height-150" })<span class="bar"></span>
+                        <label>Instructions</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="group">
+                        <span class="highlight"></span>@Html.TextAreaFor(m => m.Notes)<span class="bar"></span>
+                        <label>Notes (optional)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center margin-bottom-20">
+                    @Html.HiddenFor(m => m.RecipeId)
+                    <button class="outline-button col-10 col-sm-6 col-md-6 col-xl-4" id="recipe-button">
+                        Edit
+                        <div class="outline-button__horizontal"></div>
+                        <div class="outline-button__vertical"></div>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-lg-1 col-xl-3"></div>
+</div>

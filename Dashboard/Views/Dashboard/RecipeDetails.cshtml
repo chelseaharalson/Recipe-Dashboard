@@ -1,0 +1,142 @@
+﻿@model RecipeDashboard.Models.RecipeViewModel
+@{
+    ViewBag.Title = "Recipe Details";
+    Layout = "~/Views/Dashboard/_LayoutDashboard.cshtml";
+}
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-tasks"></i> Recipe Details</h1>
+        <p>If you need to modify, you can edit or delete the recipe</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">@Model.Name</a></li>
+    </ul>
+</div>
+
+<div class="row margin-bottom-30 margin-top-30">
+    <div class="col-12">
+        <a href="@Url.Action("MainDashboard", "Dashboard" )" class="cta text-decoration-none">
+            <span>Back</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-2"></div>
+    <div class="col-12 col-xl-8">
+        <div class="tile">
+            <div class="tile-title-w-btn">
+                <h2 class="recipe-name-header">@Model.Name</h2>
+                @using (Html.BeginForm("EditRecipe", "Dashboard", FormMethod.Get, new { @id = "edit-form" }))
+                {
+                    <input type="hidden" value="@Model.RecipeId" name="RecipeId" />
+                    <button type="submit" class="btn-border draw-border" id="edit-recipe-button">
+                        <i class="fas fa-pen-square fa-1x"></i>
+                    </button>
+                }
+            </div>
+            <div class="tile-body">
+                <div class="row">
+                    <div class="col-12">
+                        <b>Description: </b> @Model.Description
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <b>Category: </b> @Model.Category
+                        <br />
+                        <b>Servings: </b> @Model.Servings
+                        <br />
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <b>Prep Time: </b> @Model.PrepTime
+                        <br />
+                        <b>Cook Time: </b> @Model.CookTime
+                    </div>
+                </div>
+                @if (@Model.Notes != null)
+                {
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <b>Notes: </b> @Model.Notes
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="tile-footer">
+                <div class="row">
+                    <div class="col-6">
+                        @if (Model.Favorite == false)
+                        {
+                            <i class="far fa-heart fa-2x icon-red float-left"></i>
+                        }
+                        else if (Model.Favorite == true)
+                        {
+                            <i class="fas fa-heart fa-2x icon-red float-left"></i>
+                        }
+                    </div>
+                    <div class="col-6">
+                        @using (Html.BeginForm("DeleteRecipe", "Dashboard", FormMethod.Post, new { @id = "delete-form" }))
+                        {
+                            <input type="hidden" value="@Model.RecipeId" name="RecipeId" />
+                            <button type="submit" class="btn-border draw-border float-right" id="delete-recipe-button">
+                                <i class="fa fa-trash fa-1x"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-xl-2"></div>
+    <div class="col-12 col-xl-8">
+        <div class="tile">
+            <div class="tile-title-w-btn">
+                <h2 class="recipe-name-header">Ingredients</h2>
+                <button type="submit" class="button default-button button-xs-small" id="expand-ingredients">
+                    <i class="fa fa-minus fa-lg"></i>
+                </button>
+            </div>
+            <div class="tile-body ingredients">
+                <div class="row">
+                    <div class="col-12">
+                        @Html.Raw(Html.Encode(Model.Ingredients).Replace("\n\r", "<br />"))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2"></div>
+</div>
+
+<div class="row">
+    <div class="col-xl-2"></div>
+    <div class="col-12 col-xl-8">
+        <div class="tile">
+            <div class="tile-title-w-btn">
+                <h2 class="recipe-name-header">Instructions</h2>
+                <button type="submit" class="button default-button button-xs-small" id="expand-instructions">
+                    <i class="fa fa-minus fa-lg"></i>
+                </button>
+            </div>
+            <div class="tile-body instructions">
+                <div class="row">
+                    <div class="col-12">
+                        @Html.Raw(Html.Encode(Model.Instructions).Replace("\n\r\r\n", "<br /><br />"))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2"></div>
+</div>

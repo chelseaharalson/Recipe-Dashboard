@@ -1,0 +1,26 @@
+//
+// Main scss file that calls all of these components for the dashboard
+//-------------------------------------------------------------------------
+
+@import '../layouts/variables';
+@import 'dashboard/components/customize-bootstrap';
+@import '../bootstrap/bootstrap.scss';
+@import '../fontawesome/fontawesome.scss';
+@import '../fontawesome/solid.scss';
+@import '../fontawesome/regular.scss';
+
+// Components
+@import 'dashboard/components/app';
+@import 'dashboard/components/header';
+@import 'dashboard/components/sidebar';
+@import 'dashboard/components/sidebar-mini';
+@import 'dashboard/components/dropdown';
+@import 'dashboard/components/button';
+@import 'dashboard/components/app-title';
+@import 'dashboard/components/tile';
+@import 'dashboard/components/widgets';
+@import 'dashboard/components/pace';
+@import 'dashboard/components/fonts';
+@import 'dashboard/components/form';
+@import 'dashboard//components/sweetalert';
+@import 'dashboard/components/text-styles.scss';

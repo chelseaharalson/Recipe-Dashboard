@@ -1,0 +1,112 @@
+//
+// Widgets
+//-----------------------------------------------------
+
+.widget-small {
+    display: flex;
+    border-radius: 4px;
+    color: $white;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transition: box-shadow .3s;
+
+    .icon {
+        display: flex;
+        min-width: 85px;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 4px 0 0 4px;
+        font-size: 2.5rem;
+    }
+
+    .info {
+        flex: 1;
+        padding: 0 20px;
+        align-self: center;
+
+        h4 {
+            text-transform: uppercase;
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 18px;
+            font-family: 'RobotoDraft', 'Roboto', sans-serif;
+            font-weight: 700;
+            color: $primary-color;
+        }
+
+        p {
+            margin: 0;
+            font-size: 16px;
+        }
+    }
+
+    &.primary {
+        background-color: $primary-color;
+
+        &.coloured-icon {
+            background-color: #fff;
+            color: #2a2a2a;
+
+            .icon {
+                background-color: $primary-color;
+                color: #fff;
+            }
+        }
+    }
+
+    &.info {
+        background-color: theme-color("info");
+
+        &.coloured-icon {
+            background-color: #fff;
+            color: #2a2a2a;
+
+            .icon {
+                background-color: theme-color("info");
+                color: #fff;
+            }
+        }
+    }
+
+    &.warning {
+        h4 {
+            color: #ffc107 !important;
+        }
+
+        background-color: theme-color("warning");
+
+        &.coloured-icon {
+            background-color: #fff;
+            color: #2a2a2a;
+
+            .icon {
+                background-color: theme-color("warning");
+                color: #fff;
+            }
+        }
+    }
+
+    &.danger {
+        h4 {
+            color: #dc3545 !important;
+        }
+
+        background-color: theme-color("danger");
+
+        &.coloured-icon {
+            background-color: #fff;
+            color: #2a2a2a;
+
+            .icon {
+                background-color: theme-color("danger");
+                color: #fff;
+            }
+        }
+    }
+}
+
+.widget-small:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}

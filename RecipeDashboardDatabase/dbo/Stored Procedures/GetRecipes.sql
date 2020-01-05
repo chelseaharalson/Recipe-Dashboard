@@ -1,0 +1,16 @@
+﻿CREATE PROCEDURE [dbo].[GetRecipes]
+AS
+	SELECT [RecipeId]
+      ,[Name]
+      ,[Ingredients]
+      ,[Instructions]
+      ,[Category]
+      ,[CookTime]
+      ,[PrepTime]
+      ,[Image]
+	  ,[Description]
+	  ,[Notes]
+	  ,[Servings]
+	  ,[Favorite]
+  FROM [dbo].[Recipes]
+RETURN 0

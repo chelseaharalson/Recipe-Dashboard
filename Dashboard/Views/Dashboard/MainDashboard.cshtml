@@ -1,0 +1,160 @@
+﻿@model RecipeDashboard.Models.MainDashboardRecipeViewModel
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "~/Views/Dashboard/_LayoutDashboard.cshtml";
+}
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-tasks"></i> Recipes</h1>
+        <p>A dashboard to keep track of your favorite recipes</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+        <li class="breadcrumb-item"><a href="#">Recipes</a></li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-lg-4">
+        <a href="@Url.Action("AddRecipe")" class="text-decoration-none">
+            <div class="widget-small primary coloured-icon">
+                <i class="icon fa fa-plus fa-3x"></i>
+                <div class="info">
+                    <h4>Add Recipe</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-12 col-lg-4">
+        <a href="@Url.Action("MainDashboard")" class="text-decoration-none">
+            <div class="widget-small warning coloured-icon">
+                <i class="icon fa fa-calculator fa-3x"></i>
+                <div class="info">
+                    <h4>Recipe Count</h4>
+                    <h4>@Model.RecipeCards.Count()</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-12 col-lg-4">
+        <a href="#" class="filter-favorites text-decoration-none">
+            <div class="widget-small danger coloured-icon">
+                <i class="icon fa fa-heart fa-3x"></i>
+                <div class="info">
+                    <h4>Favorites</h4>
+                    <h4 id="FavoriteCount">@Html.DisplayFor(m => m.FavoriteCount)</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+@if (Model.RecipeCards != null)
+{
+    <div class="row">
+        <div class="col-12 col-lg-6 col-xl-4 margin-bottom-20">
+            @Html.DropDownListFor(m => m.CategoryFilter, RecipeDashboard.Utils.CategoryList.GetCategoryList().OrderBy(c => c.Text), "Filter by Category", new { @class = "cs-select cs-skin-elastic" })
+        </div>
+    </div>
+    <div class="row">
+        @{ foreach (var card in Model.RecipeCards.OrderBy(c => c.Name))
+            {
+                <div class="col-12 col-lg-6 col-xl-4 recipe-card margin-bottom-20" data-categoryname="@card.Category" data-isfavorite="@card.Favorite">
+                    <div class="tile h-100">
+                        <div class="tile-title-w-btn">
+                            @{
+                                if (@card.Favorite == false)
+                                {
+                                    <i class="far fa-heart fa-2x icon-red float-right favorite-button" data-recipeid="@card.RecipeId" data-favorite="@card.Favorite"></i>
+                                }
+                                else if (@card.Favorite == true)
+                                {
+                                    <i class="fas fa-heart fa-2x icon-red float-right favorite-button" data-recipeid="@card.RecipeId" data-favorite="@card.Favorite"></i>
+                                }
+                            }
+                            <a href="@Url.Action("RecipeDetails", new {id = card.RecipeId})" class=""><h3 class="card-header-size">@Html.DisplayFor(m => card.Name)</h3></a>
+                            @{
+                                if (card.Category == "Beef")
+                                {
+                                    <i class="fas fa-hamburger fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Appetizers")
+                                {
+                                    <i class="fas fa-cheese fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Breakfast")
+                                {
+                                    <i class="fas fa-egg fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Chicken")
+                                {
+                                    <i class="fas fa-drumstick-bite fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Desserts")
+                                {
+                                    <i class="fas fa-ice-cream fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Pork")
+                                {
+                                    <i class="fas fa-bacon fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Pork")
+                                {
+                                    <i class="fas fa-bacon fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Salads")
+                                {
+                                    <i class="fas fa-seedling fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Pork")
+                                {
+                                    <i class="fas fa-bacon fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Seafood")
+                                {
+                                    <i class="fas fa-fish fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Snacks")
+                                {
+                                    <i class="fas fa-cookie-bite fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Soups")
+                                {
+                                    <i class="fas fa-coffee fa-2x icon-blue"></i>
+                                }
+                                else if (card.Category == "Vegetables")
+                                {
+                                    <i class="fas fa-carrot fa-2x icon-blue"></i>
+                                }
+                            }
+                        </div>
+                        <div class="tile-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>Description: </b> @card.Description
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <b>Category: </b> @card.Category
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <b>Servings: </b> @card.Servings
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <b>Prep Time: </b> @card.PrepTime
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <b>Cook Time: </b> @card.CookTime
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

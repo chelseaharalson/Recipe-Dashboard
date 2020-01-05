@@ -1,0 +1,172 @@
+//
+// Recipe Form
+//-----------------------------------------------------
+
+* {
+    box-sizing: border-box;
+}
+
+.recipe-form {
+    margin: 2em auto;
+    padding: 3em 2em 2em 2em;
+    background: $form-bg;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.recipe-header {
+    font-family: 'RobotoDraft', 'Roboto', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: $pink-color-button;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-left: 5px solid $pink-color-button;
+    padding: 10px 0 10px 20px;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+// Form input and textareas
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    -webkit-appearance: none;
+    display: block;
+    background: $form-bg;
+    color: #636363;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    -webkit-appearance: none;
+    display: block;
+    background: $form-bg;
+    color: #636363;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+// Label
+label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: all 0.2s ease;
+}
+
+// Active
+input:focus ~ label, input.used ~ label {
+    top: -20px;
+    transform: scale(.75);
+    left: -8px;
+    color: $primary-color;
+}
+
+textarea:focus ~ label, textarea.used ~ label {
+    top: -20px;
+    transform: scale(.75);
+    left: -8px;
+    color: $primary-color;
+}
+
+// Underline
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before, .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: $primary-color;
+    transition: all 0.2s ease;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+// Active
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+}
+
+textarea:focus ~ .bar:before, textarea:focus ~ .bar:after {
+    width: 50%;
+}
+
+// Highlight
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+// Active
+input:focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+}
+
+// Animations
+@keyframes inputHighlighter {
+    from {
+        background: $primary-color;
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+// Spacing
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.margin-top-30 {
+    margin-top: 3.0em;
+}
+
+.set-height-150 {
+    height: 150px !important;
+}
