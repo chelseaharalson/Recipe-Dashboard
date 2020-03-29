@@ -1,6 +1,6 @@
 # Recipe Dashboard
 
-http://recipe-dashboard.us-east-2.elasticbeanstalk.com/
+http://ec2-3-134-245-191.us-east-2.compute.amazonaws.com/
 
 ### MODEL:
 
